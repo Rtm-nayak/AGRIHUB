@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sign up for Agri-Innovation Hub - Join our community of farmers and researchers">
+    <title>Sign Up - Agri-Innovation Hub</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .form-container {
+            max-width: 400px;
+            margin: 2rem auto;
+        }
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        .password-input-container {
+            position: relative;
+        }
+        .toggle-password {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+        }
+        .password-requirements {
+            font-size: 0.85rem;
+            color: #666;
+            margin-top: 0.5rem;
+        }
+        .form-footer {
+            text-align: center;
+            margin-top: 1.5rem;
+        }
+        .footer-nav {
+            margin-top: 1rem;
+        }
+        .footer-nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 0.5rem;
+        }
+        .role-selection {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        .role-option {
+            flex: 1;
+            padding: 1rem;
+            border: 2px solid var(--primary-color);
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            text-align: center;
+            transition: var(--transition);
+        }
+        .role-option:hover {
+            background-color: rgba(76, 175, 80, 0.1);
+        }
+        .role-option.selected {
+            background-color: var(--primary-color);
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Sign Up for Agri-Innovation Hub</h1>
+        <p>Join our community and connect with agricultural innovators</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="login.html">Login</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section class="form-container">
+            <form id="signup-form" aria-labelledby="signup-heading">
+                <h2 id="signup-heading">Create Your Account</h2>
+
+                <div class="role-selection">
+                    <div class="role-option" data-role="farmer">
+                        <h3>Farmer</h3>
+                        <p>Access innovative farming solutions</p>
+                    </div>
+                    <div class="role-option" data-role="researcher">
+                        <h3>Researcher</h3>
+                        <p>Share your agricultural research</p>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input 
+                        type="text" 
+                        id="username" 
+                        name="username" 
+                        required 
+                        autocomplete="username"
+                        aria-required="true"
+                        placeholder="Choose a username"
+                        pattern="[a-zA-Z0-9_]{3,20}"
+                        title="Username must be between 3 and 20 characters and can only contain letters, numbers, and underscores"
+                    >
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input 
+                        type="email" 
+                        id="email" 
+                        name="email" 
+                        required 
+                        autocomplete="email"
+                        aria-required="true"
+                        placeholder="Enter your email address"
+                    >
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <div class="password-input-container">
+                        <input 
+                            type="password" 
+                            id="password" 
+                            name="password" 
+                            required 
+                            autocomplete="new-password"
+                            aria-required="true"
+                            placeholder="Create a password"
+                            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                            title="Must contain at least one number, one uppercase and lowercase letter, and be at least 8 characters long"
+                        >
+                        <button type="button" class="toggle-password" aria-label="Toggle password visibility">
+                            👁️
+                        </button>
+                    </div>
+                    <div class="password-requirements">
+                        Password must:
+                        <ul>
+                            <li>Be at least 8 characters long</li>
+                            <li>Include at least one uppercase letter</li>
+                            <li>Include at least one lowercase letter</li>
+                            <li>Include at least one number</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="confirm-password">Confirm Password</label>
+                    <div class="password-input-container">
+                        <input 
+                            type="password" 
+                            id="confirm-password" 
+                            name="confirm-password" 
+                            required 
+                            autocomplete="new-password"
+                            aria-required="true"
+                            placeholder="Confirm your password"
+                        >
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="terms" name="terms" required>
+                        I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>
+                    </label>
+                </div>
+                
+                <button type="submit" class="submit-btn">Create Account</button>
+                
+                <p class="form-footer">
+                    Already have an account? 
+                    <a href="login.html">Login here</a>
+                </p>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 Agri-Innovation Hub. All rights reserved.</p>
+        <nav class="footer-nav">
+            <a href="#">Privacy Policy</a> |
+            <a href="#">Terms of Service</a> |
+            <a href="#">Contact Us</a>
+        </nav>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

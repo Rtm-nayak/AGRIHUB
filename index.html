@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Agri-Innovation Hub - Connecting farmers and researchers for sustainable agriculture">
+    <title>Agri-Innovation Hub</title>
+    <style>
+        :root {
+            --primary-color: #4CAF50;
+            --border-radius: 8px;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f5f5;
+        }
+
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 1rem;
+        }
+
+        nav {
+            background-color: white;
+            padding: 1rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: #333;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        section {
+            margin-bottom: 4rem;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: linear-gradient(rgba(76, 175, 80, 0.9), rgba(76, 175, 80, 0.7)), url('https://images.unsplash.com/photo-1625246333195-78d9c38ad449?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            animation: fadeInUp 1s ease-out 0.2s;
+            opacity: 0;
+            animation-fill-mode: forwards;
+        }
+
+        .cta-buttons {
+            margin-top: 2rem;
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            animation: fadeInUp 1s ease-out 0.4s;
+            opacity: 0;
+            animation-fill-mode: forwards;
+        }
+
+        .cta-button {
+            padding: 1rem 2rem;
+            border: 2px solid white;
+            border-radius: var(--border-radius);
+            color: white;
+            text-decoration: none;
+            transition: var(--transition);
+            font-weight: bold;
+        }
+
+        .cta-button.primary {
+            background: white;
+            color: var(--primary-color);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 4rem 2rem;
+        }
+
+        .feature-card {
+            text-align: center;
+            padding: 2rem;
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: var(--transition);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .tool-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        select, input[type="text"] {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid #ddd;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+        }
+
+        .submit-btn {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            font-size: 1rem;
+            width: 100%;
+        }
+
+        .symptom-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .checkbox-label {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem;
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+        }
+
+        .checkbox-label:hover {
+            background: #f5f5f5;
+        }
+
+        .disease-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .disease-card {
+            background: #f5f5f5;
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+        }
+
+        .disease-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .severity {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 1rem;
+            font-weight: bold;
+            margin: 0.5rem 0;
+        }
+
+        .severity.high {
+            background: #ffebee;
+            color: #c62828;
+        }
+
+        .severity.medium {
+            background: #fff3e0;
+            color: #ef6c00;
+        }
+
+        .severity.low {
+            background: #e8f5e9;
+            color: #2e7d32;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 2rem;
+            color: var(--primary-color);
+            font-style: italic;
+        }
+
+        .fade-in {
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .accordion {
+            background-color: white;
+            color: #333;
+            cursor: pointer;
+            padding: 1rem;
+            width: 100%;
+            text-align: left;
+            border: none;
+            outline: none;
+            transition: var(--transition);
+            border-radius: var(--border-radius);
+            margin-bottom: 0.5rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .accordion:hover {
+            background-color: #f0f0f0;
+        }
+
+        .accordion.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .panel {
+            padding: 0 1rem;
+            background-color: white;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        .footer-nav {
+            margin-top: 1rem;
+        }
+
+        .footer-nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .cta-button {
+                width: 100%;
+                text-align: center;
+            }
+
+            nav ul {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .symptom-options {
+                grid-template-columns: 1fr;
+            }
+
+            .disease-cards {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Agri-Innovation Hub</h1>
+        <p>Connecting Farmers and Researchers for Sustainable Agriculture</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#weather">Weather</a></li>
+            <li><a href="#quiz">Knowledge Quiz</a></li>
+            <li><a href="#resources">Resources</a></li>
+            <li><a href="#disease-identifier">Disease Identifier</a></li>
+            <li><a href="login.html">Login</a></li>
+            <li><a href="signup.html">Sign Up</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section class="hero">
+            <h1>Transform Agriculture Through Innovation</h1>
+            <p>Join our community of farmers and researchers working together to develop sustainable agricultural practices and innovative solutions.</p>
+            <div class="cta-buttons">
+                <a href="signup.html" class="cta-button primary">Get Started</a>
+                <a href="#features" class="cta-button">Learn More</a>
+            </div>
+        </section>
+
+        <section id="features" class="features">
+            <div class="feature-card">
+                <div class="feature-icon">🌱</div>
+                <h3>Sustainable Practices</h3>
+                <p>Learn about the latest sustainable farming techniques and implement them in your agricultural practices.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🤝</div>
+                <h3>Community Connection</h3>
+                <p>Connect with farmers and researchers worldwide to share knowledge and experiences.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📊</div>
+                <h3>Research Insights</h3>
+                <p>Access cutting-edge agricultural research and data-driven farming solutions.</p>
+            </div>
+        </section>
+
+        <section id="weather">
+            <h2>Weather & Crop Advisory</h2>
+            <div id="weather-widget">
+                <form id="weather-form">
+                    <input 
+                        type="text" 
+                        id="location" 
+                        placeholder="Enter your location" 
+                        required
+                        aria-label="Location input"
+                    >
+                    <button type="submit" class="submit-btn">Get Weather</button>
+                </form>
+                <div id="weather-display"></div>
+                <div id="crop-suggestions"></div>
+            </div>
+        </section>
+
+        <section id="quiz">
+            <h2>Test Your Agricultural Knowledge</h2>
+            <div id="quiz-container">
+                <!-- Quiz content will be dynamically inserted by JavaScript -->
+            </div>
+        </section>
+
+        <section id="resources">
+            <h2>Agricultural Resources</h2>
+            <div class="accordion">Sustainable Farming Practices</div>
+            <div class="panel">
+                <p>Learn about crop rotation, organic farming, and soil conservation techniques that can help improve your farm's sustainability.</p>
+            </div>
+
+            <div class="accordion">Research Publications</div>
+            <div class="panel">
+                <p>Access the latest agricultural research papers and studies conducted by leading institutions worldwide.</p>
+            </div>
+
+            <div class="accordion">Community Forums</div>
+            <div class="panel">
+                <p>Join discussions with fellow farmers and researchers to share experiences and solve common agricultural challenges.</p>
+            </div>
+        </section>
+
+        <section id="disease-identifier">
+            <h2>Crop Disease Identifier</h2>
+            <div class="tool-container">
+                <form id="disease-form">
+                    <div class="form-group">
+                        <label for="crop-type">Select Crop Type:</label>
+                        <select id="crop-type" required>
+                            <option value="">Choose a crop...</option>
+                            <option value="rice">Rice</option>
+                            <option value="wheat">Wheat</option>
+                            <option value="corn">Corn</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <p>Select Observed Symptoms:</p>
+                        <div class="symptom-options">
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="symptom" value="leaf_spots">
+                                Leaf Spots/Lesions
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="symptom" value="wilting">
+                                Wilting/Yellowing
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="symptom" value="yellow_patches">
+                                Yellow Patches
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="symptom" value="stunted_growth">
+                                Stunted Growth
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="symptom" value="leaf_blight">
+                                Leaf Blight
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="symptom" value="stalk_rot">
+                                Stalk Rot
+                            </label>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="submit-btn">Analyze Symptoms</button>
+                </form>
+                <div id="disease-display"></div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Agri-Innovation Hub. All rights reserved.</p>
+        <nav class="footer-nav">
+            <a href="#">Privacy Policy</a> |
+            <a href="#">Terms of Service</a> |
+            <a href="#">Contact Us</a>
+        </nav>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
